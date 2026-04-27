@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 90 Percent -- Kobe Anderson</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1410;
+    --paper: #f5f0e8;
+    --accent: #1b6124;
+    --muted: #7f8a72;
+    --rule: #c8b89a;
+  }
+
+  html { font-size: 18px; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Lora', Georgia, serif;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.4;
+  }
+
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 80px 40px 120px;
+    animation: fadeIn 1.2s ease both;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .header {
+    margin-bottom: 64px;
+    animation: fadeIn 1.4s ease 0.2s both;
+  }
+
+  .label {
+    font-family: 'Lora', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+
+  .byline {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .byline::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .rule {
+    width: 100%;
+    height: 1px;
+    background: var(--rule);
+    margin: 48px 0;
+    animation: fadeIn 1.4s ease 0.4s both;
+  }
+
+  .essay p:first-of-type::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    font-weight: 700;
+    float: left;
+    line-height: 0.75;
+    margin: 8px 12px 0 0;
+    color: var(--accent);
+  }
+
+  .essay {
+    animation: fadeIn 1.4s ease 0.6s both;
+  }
+
+  .essay p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--ink);
+    margin-bottom: 1.6em;
+    font-weight: 400;
+  }
+
+  .pullquote {
+    border-left: 3px solid var(--accent);
+    margin: 48px 0;
+    padding: 8px 0 8px 32px;
+  }
+
+  .pullquote p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.25rem !important;
+    line-height: 1.6 !important;
+    color: var(--accent) !important;
+    margin: 0 !important;
+  }
+
+  .aside {
+    background: rgba(139, 58, 42, 0.05);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 24px 0;
+    margin: 40px 0;
+  }
+
+  .aside p {
+    font-size: 0.875rem !important;
+    color: var(--muted) !important;
+    font-style: italic;
+    margin: 0 !important;
+  }
+
+  .footer {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+    animation: fadeIn 1.4s ease 0.8s both;
+  }
+
+  .footer-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .footer p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .footer a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    transition: border-color 0.2s;
+  }
+
+  .footer a:hover { border-color: var(--accent); }
+
+  @media (max-width: 600px) {
+    .page { padding: 48px 24px 80px; }
+    h1 { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <p class="label">Translational Neuroscience</p>
+    <h1>The 90 Percent</h1>
+    <p class="subtitle">On failure, helplessness, and what we are actually trying to do</p>
+    <div class="byline">Kobe Anderson · 2026</div>
+  </header>
+
+  <div class="rule"></div>
+
+  <article class="essay">
+
+    <p>My first year of graduate school I did what first year students do. I read and reviewed literature. I tried to understand the depth of the field I had just joined. At some point in that process I was prompted by my research mentor to look into translational efficacy rates so we could better understand how well preclinical research actually translates into treatments that help people. I thought I had a general sense of the answer. I did not.</p>
+
+    <p>In oncology, one of the most heavily funded areas of biomedical research, the translational success rate sits at around 3.4 percent. The highest rates across the major fields reach maybe 33 percent. I sat with those numbers for a while. I knew them, in the way you can know something without really letting it land. Then a lab member pulled up an FDA document. The FDA had published a formal rationale for why New Approach Methodologies are necessary. Inside that rationale was a number I have not been able to set aside since: preclinical animal models have a 92 percent failure rate.</p>
+
+    <div class="pullquote">
+      <p>How do we not call this complete failure?</p>
+    </div>
+
+    <p>I want to be careful here. I understand that progress has been made. Real progress. Miracles, even, by the people who have devoted their lives to this work. There is also real suffering in the world and unjust circumstances. I do not want to dismiss that. But regarding biomedical research, 3 percent is not acceptable. And saying so out loud, in a field that has normalized these numbers, feels like saying something that is not supposed to be said. The question that kept coming back to me was not “how did we get here?”. It was “why does the field not seem to be asking that question with the same urgency?” I felt reading those numbers for the first time. My advisor had been planting a seed for a while before I understood what it was. He had a consistent hesitance toward reductionistic methods. Not a rejection of rigor. A hesitance toward the assumption that if you isolate the right variable, control for everything else, and find the single mechanism, you will find the answer. He said it often enough that I had absorbed it as a methodological principle without understanding it as a diagnosis. The 92 percent failure rate was the moment I understood it as a diagnosis.</p>
+
+    <p>My advisor had been planting a seed for a while before I understood what it was. He had a consistent hesitance toward reductionistic methods. Not a rejection of rigor. A hesitance toward the assumption that if you isolate the right variable, control for everything else, and find the single mechanism, you will find the answer. He said it often enough that I had absorbed it as a methodological preference without fully conceptualizing it. The 92 percent failure rate was the moment I understood it as a more than just a critique of methodology.</p>
+
+    <div class="aside">
+      <p>I am not saying reductionism is wrong, but it is incomplete. Isolating a variable tells you what that variable does in isolation. It does not tell you what that variable does inside a living organism that is simultaneously managing a thousand other variables, with a history, a sex, a genetic background, and an environment. Examining a single component tells you nothing about the system it belongs to. Looking at a singular screw gives no insight into its organization within a system. Is it meant for a house? What part of the house? These unanswered questions on organization within a system are the gap that needs to be addressed. This same gap between the model and the organism is where the 92 percent lives.</p>
+    </div>
+
+    <p>When I found those numbers, I felt a strong and undeniable sense of helplessness. I had just committed to a field, spent years preparing to enter it, and the data was telling me that the system I joined had been producing failure at a rate that would be unacceptable in any other context. I did not know what to do with that. I still do not, fully. But I have learned something about the source of this helplessness that has changed how I work.</p>
+
+    <p>The helplessness comes from the belief that the system needs to be fixed. That 92 percent is a problem to solve, a gap to close, a failure to correct. And as long as that is the frame, the numbers hold weight that seems unbearable. Because the honest answer is that no one person, no one lab, no one methodology is going to fix it. The scale of the problem relative to any individual effort is genuinely overwhelming if the goal is to simply fix it.</p>
+
+    <p>Several faculty members, at different points, said some version of the same thing to me: do what you can. Not in a manner of defeat, but as clarity. The question is not how do I fix the 92 percent. The question is what can you do in this moment, with the tools you have, toward something that matters. That reframe did not come easily. But it is the one that offers the partial resolution our brain is always after. </p>
+    <div class="pullquote">
+      <p>Our goal is not to fix. It is to learn.</p>
+    </div>
+
+    <p>What that looks like in practice is a multidimensional neurobehavioral approach. Instead of isolating one behavior, one circuit, one sex, one outcome measure, and trying to extract a clean effect, we build rich profiles. We run the same animals through open field, water maze, and elevated plus maze. We track them across time and across tasks. We account for sex as a biological variable, not because NIH requires it, but because variation between sexes is information, and discarding information is how you end up with a 92 percent failure rate. We are not trying to find the thing that fixes compulsive behavior. We are trying to understand what compulsive behavior actually is, in its full dimensionality, before we presume to correct it.</p>
+   
+    <p>The data from our own lab shows this. Across open field testing in rats, females traveled nearly 27% more distance and moved 27% faster than males — both statistically significant differences (p = 0.002). Females also showed 55% more object investigations. Yet when the same animals ran the elevated plus maze, a paradigm specifically designed to measure anxiety, open arm time was nearly identical between sexes (Males = 79.5 seconds, Females = 75.2 seconds, p = 0.71). Two paradigms, same animals, opposite conclusions about sex differences. A reductionist approach using either paradigm alone would produce a confident but incomplete picture. This is exactly what results in translational inefficacy. The variation between paradigms is the most important signal in the dataset — evidence that behavior cannot be reduced to a single measure without losing what makes each animal unique. This is what treating variance as information rather than error actually looks like in practice. </p>
+   
+    <p>This is a different approach than what most preclinical research sets out with. It is slower. It produces richer data and fewer high-profile publications. It does not lend itself to the kind of result that generates immediate results. But I think the 92 percent is, in part, the cost of chasing clean results in systems that are anything but that. The organism is not a controlled experiment. The organism is quite literally a living accumulation of variation. Treating that variation as noise to be eliminated is how you build a model that works in the lab and fails everywhere else.</p>
+    
+    <p>The helplessness I felt reading those numbers was real. I am not pretending it was not. But I have come to understand that the helplessness itself was a product of the same reductionistic thinking I was critiquing. I wanted one answer, one fix, one clean resolution to a complex problem. What I have instead is a question I can spend a career on. What does behavior actually look like when you stop trying to reduce it? What do you find when you treat variation as the signal and not the noise?</p>
+
+    <p>I do not know yet. That is the point.</p>
+
+  </article>
+
+  <div class="rule"></div>
+
+  <footer class="footer">
+    <p class="footer-label">About the author</p>
+    <p>Kobe Anderson is a behavioral neuroscience M.A. candidate at Towson University, where he studies corticostriatal circuits, translational research methodology, and NIH SABV-compliant behavioral analysis. He builds open-source tools for preclinical research labs.</p>
+    <br>
+    <p><a href="https://kobedev.netlify.app">kobedev.netlify.app</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
